@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DealBeacon — Black Friday Deal Finder 2026</title>
+<meta name="description" content="35 real Black Friday 2026 deals, each price checked 27 Nov 2026 at its store, with an honest verdict on whether it is really a deal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">◆</span>
+      <div>
+        <h1>DealBeacon</h1>
+        <p class="tagline">Black Friday 2026 — real prices, checked today, verdicts included.</p>
+      </div>
+    </div>
+    <dl class="stats">
+      <div><dt>Deals</dt><dd id="stat-deals">35</dd></div>
+      <div><dt>Stores</dt><dd id="stat-stores">4</dd></div>
+      <div><dt>Categories</dt><dd id="stat-cats">8</dd></div>
+      <div><dt>Checked</dt><dd>27 Nov 2026</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="controls" aria-label="Find a deal">
+    <div class="control-row">
+      <label class="search-label" for="search">Search
+        <input id="search" type="search" placeholder="Try “TV”, “AirPods”, “LEGO”…">
+      </label>
+      <label for="category">Category
+        <select id="category">
+          <option value="">All categories</option>
+          <option>TVs</option>
+          <option>Laptops</option>
+          <option>Headphones</option>
+          <option>Wearables</option>
+          <option>Smart Home</option>
+          <option>Toys &amp; Gaming</option>
+          <option>Home</option>
+          <option>Tablets &amp; Accessories</option>
+        </select>
+      </label>
+      <label for="store">Store
+        <select id="store">
+          <option value="">All stores</option>
+          <option>Amazon</option>
+          <option>Best Buy</option>
+          <option>Walmart</option>
+          <option>Dell</option>
+        </select>
+      </label>
+      <label for="mindisc">Minimum discount
+        <select id="mindisc">
+          <option value="0">Any discount</option>
+          <option value="20">20% off or more</option>
+          <option value="40">40% off or more</option>
+          <option value="50">50% off or more</option>
+        </select>
+      </label>
+      <label for="sort">Sort by
+        <select id="sort">
+          <option value="disc">Biggest discount</option>
+          <option value="save">Biggest saving</option>
+          <option value="verdict">Best verdict</option>
+          <option value="price-asc">Lowest price</option>
+        </select>
+      </label>
+    </div>
+    <p class="result-count" id="result-count" aria-live="polite"></p>
+  </section>
+
+  <section class="compare" id="compare" aria-label="Same product at two stores"></section>
+
+  <section class="deals" id="deals" aria-label="Deals"></section>
+
+  <section class="method" aria-label="How prices were checked">
+    <h2>How these prices were checked</h2>
+    <p>Every price on this page was read on <strong>27 November 2026</strong> from the store's own
+    product page or from a deals source that names the store — the source is printed on each deal.
+    The discount shown is always computed from the two prices on the card, so it adds up.
+    A <strong>NEW LOW</strong> means the lowest price tracked for that product this season;
+    <strong>STRONG</strong> means a deep cut near its best price;
+    <strong>ROUTINE</strong> means a modest cut, or a saving measured against a list price the
+    product rarely sold at. Prices move fast on Black Friday — always confirm the price on the
+    store page before you buy. Links go straight to the product at the store named.</p>
+    <p class="verdict-key">
+      <span class="badge badge-newlow">NEW LOW</span> lowest price tracked this season
+      <span class="badge badge-strong">STRONG</span> deep cut, near its best price
+      <span class="badge badge-routine">ROUTINE</span> modest cut, or a soft list price
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>DealBeacon — an independent deal finder. Not affiliated with Amazon, Best Buy, Walmart or Dell.
+  Store names are used only to say where each deal is sold. Prices checked 27 Nov 2026, WIB.</p>
+</footer>
+
+<script src="deals.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
