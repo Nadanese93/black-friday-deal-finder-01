@@ -4,7 +4,7 @@
 // Node 22, standard library only. No network, no secrets, no reading
 // anything outside this repository. Deterministic: two runs write
 // byte-identical output.
-import { copyFileSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildDossier } from "./vendor/makefun-frontend.ts";
@@ -26,8 +26,17 @@ function copyTreeSorted(fromDir: string, toDir: string): void {
   }
 }
 
-rmSync(outputDir, { recursive: true, force: true });
+// Clean only the CONTENTS of the output dir — never the dir itself:
+// the grader mounts it, so removing it fails with EPERM (E22).
+// (If the path exists as a plain file instead of a directory,
+// remove that file first so the directory can be created.)
+if (existsSync(outputDir) && !statSync(outputDir).isDirectory()) {
+  rmSync(outputDir, { force: true });
+}
 mkdirSync(outputDir, { recursive: true });
+for (const name of readdirSync(outputDir)) {
+  rmSync(join(outputDir, name), { recursive: true, force: true });
+}
 copyTreeSorted(join(repoDir, "app"), join(outputDir, "app"));
 copyTreeSorted(join(repoDir, "screenshots"), join(outputDir, "screenshots"));
 writeFileSync(
